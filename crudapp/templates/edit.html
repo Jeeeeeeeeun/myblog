@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html>
+    <head>
+        <title>글 수정</title>
+        <style>
+            body {
+                margin : 20px;
+            }
+        </style>
+    </head>
+    <body>
+
+
+        <h1>edit.html</h1>
+
+        <form method='POST'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <br>
+            <input type="submit" value="수정">
+        </form>
+
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,66 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>{{post.title}}</title>
+
+            <style>
+
+                h1 {
+                    text-align: center;
+                }
+
+                .date{
+                    padding: 10px;
+                    font-size: 8pt;
+                }
+                .contents{
+                    margin: 20px;
+                }
+                .editdelete{
+                    text-align: right;
+                }
+            </style>
+        </head>
+
+        <body>            
+            <div class="contents">
+                <a href="{% url 'main' %}">HOME</a>
+                <h1 style="text-align: center">{{ post.title }}</h1>
+
+                <div class="date">
+                    <p>작성 날짜 : {{ post.created_at }} <br>
+                        수정 날짜 : {{ post.updated_at }}</p>
+                </div>
+                
+                <hr>
+                <p>{{ post.content }}</p>
+                <hr>
+
+                <div class="editdelete">
+                    <a href="{% url 'postupdate' post.id %}">수정하기</a>
+                    <a href="{% url 'postdelete' post.id %}" onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</a>
+                </div>
+                
+                <br>
+
+                {% if scrap %}
+                    <a type="button" class="btn btn-secondary" href="{% url 'scrap' post.id %}">스크랩 취소</a>
+                {% else %}
+                    <a type="button" class="btn btn-primary" href="{% url 'scrap' post.id %}">스크랩</a>
+                {% endif %}
+
+
+                {% if like %}
+                    <a type="button" class="btn btn-secondary" href="{% url 'like' post.id %}">좋아요 취소</a>
+                {% else %}
+                    <a type="button" class="btn btn-danger" href="{% url 'like' post.id %}">좋아요</a>
+                {% endif %}
+
+                
+            </div>
+            {% endblock %}
+        </body>
+    </html>

@@ -1,0 +1,43 @@
+
+
+<html>
+    <head>
+        <title>Log in</title>
+        <style>
+            body {
+                margin:30px;
+            }
+        </style>
+    </head>
+    <body>
+        {% extends 'base.html' %}
+
+        {% block content %}
+
+        {% if error %}
+        {{ error }}
+        <br>
+        <br>
+        {% endif %}
+
+        <h1 style="margin:30px">Login</h1>
+
+        <form method="POST" action="{% url 'login' %}" style="margin:30px;">
+            {% csrf_token %}
+            Username : 
+            <br>
+            <input name="username" type="text" value="">
+            <br>
+
+            Password:
+            <br>
+            <input name="password" type="password" value="">
+            <br>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Login">
+
+        </form>
+
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>My Blog</title>
+            <style>
+                h1 {
+                    text-align: center;
+                }
+
+                .postlist{
+                    text-align: center;
+                }
+
+                .contents{
+                    margin:20px;
+                }
+
+                .new{
+                    text-align: right;
+                }
+            </style>
+        </head>
+        <body>
+
+
+            <div class="contents">   
+                <h1>JJE's Blog</h1>
+                <br>
+                <hr>
+                <div class='postlist'>
+                    {% for post in posts %}
+                        <h3><a href="{% url 'show' post.id %}">{{ post.title }}</a></h3>
+                        <br>
+                    {% empty %}
+                        <p>작성된 글이 없습니다.</p>
+                    {% endfor %}
+                </div>
+                <hr>
+                
+                <div class="new">
+                    <a class="btn btn-info" href="{% url 'postcreate' %}">새 글 쓰기</a>
+                </div>
+            </div>
+
+            {% endblock %}
+        </body>
+
+    </html>

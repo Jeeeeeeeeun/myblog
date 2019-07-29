@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method='POST'>
+    {% csrf_token %}
+
+    <div class='container'>
+        {{form.date.label}}
+        {{form.date}}
+        {{form.title.label}}
+        {{form.title}}
+        {{form.content.label}}
+        {{form.content}}
+
+        <br>
+        <input type='submit' value='등록'>
+    </div>
+</form>
+
+{% endblock %}
